@@ -1,0 +1,35 @@
+---
+#create task name
+- name: Create an HTML file on Windows D Drive
+#since I am using local host that by localhost
+  hosts: localhost
+  connection: local
+  #the connection is local in my device only
+  tasks:
+
+    - name: Create an HTML file
+      copy:
+        dest: /mnt/d/my_html_file.html
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>My Ansible Generated Page</title>
+          </head>
+          <body>
+              <h1>Hello, World!</h1>
+              <p>This HTML file was created by an Ansible Playbook in WSL.</p>
+          </body>
+          </html>
+        owner: root    # Move owner and group under the copy module
+        group: root
+        mode: '0644'
+
+# Important commands
+
+# sudo apt update
+# sudo apt install ansible
+# mkdir ~/ansible-html-project
+# cd ~/ansible-html-project
+
+
